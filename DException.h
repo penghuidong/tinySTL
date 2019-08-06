@@ -36,18 +36,36 @@ protected:
     char* m_what;
     void set_what();
 public:
-    indexOutOfRange() : DException(NULL){set_what();}
+    indexOutOfRange() : DException(NULL)
+	{
+		set_what();
+	}
 
-    explicit indexOutOfRange(const char* message) : DException(message){set_what();}
+    explicit indexOutOfRange(const char* message) : DException(message)
+	{
+		set_what();
+	}
 
-    indexOutOfRange(const char* file, int line) : DException(file, line){set_what();}
+    indexOutOfRange(const char* file, int line) : DException(file, line) 
+	{
+		set_what();
+	}
+
     indexOutOfRange(const char* message, const char* file, int line) :
-        DException(message, file, line){set_what();}
+        DException(message, file, line)
+	{
+		set_what();
+	}
 
-    indexOutOfRange(const indexOutOfRange& e) : DException(e){m_what = _strdup(e.m_what);}
+    indexOutOfRange(const indexOutOfRange& e) : DException(e)
+	{
+		m_what = strdup(e.m_what);
+	}
 
     indexOutOfRange& operator =(const indexOutOfRange& e);
-    const char* what();
+    
+	const char* what();
+
     virtual ~indexOutOfRange();
 };
 
@@ -55,9 +73,12 @@ class invalidParameter : public DException
 {
 public:
     invalidParameter() : DException(NULL) {}
+
     explicit invalidParameter(const char* message) : DException(message){}
-    invalidParameter(const char* file, int line) : DException(file, line) {}
-    invalidParameter(const char* message, const char* file, int line ) : DException(message,file,line) {}
+    
+	invalidParameter(const char* file, int line) : DException(file, line) {}
+    
+	invalidParameter(const char* message, const char* file, int line ) : DException(message,file,line) {}
 
     invalidParameter(const invalidParameter& e) : DException(e) {}
 
@@ -72,9 +93,12 @@ class arithmeticErr : public DException
 {
 public:
     arithmeticErr() : DException(NULL) {}
-    explicit arithmeticErr(const char* message) : DException(message){}
-    arithmeticErr(const char* file, int line) : DException(file, line) {}
-    arithmeticErr(const char* message, const char* file, int line ) : DException(message,file,line) {}
+    
+	explicit arithmeticErr(const char* message) : DException(message){}
+    
+	arithmeticErr(const char* file, int line) : DException(file, line) {}
+    
+	arithmeticErr(const char* message, const char* file, int line ) : DException(message,file,line) {}
 
     arithmeticErr(const arithmeticErr& e) : DException(e) {}
 
@@ -89,9 +113,12 @@ class invalidOperation : public DException
 {
 public:
     invalidOperation() : DException(NULL) {}
-    explicit invalidOperation(const char* message) : DException(message){}
-    invalidOperation(const char* file, int line) : DException(file, line) {}
-    invalidOperation(const char* message, const char* file, int line ) : DException(message,file,line) {}
+    
+	explicit invalidOperation(const char* message) : DException(message){}
+    
+	invalidOperation(const char* file, int line) : DException(file, line) {}
+    
+	invalidOperation(const char* message, const char* file, int line ) : DException(message,file,line) {}
 
     invalidOperation(const invalidOperation& e) : DException(e) {}
 
@@ -107,9 +134,12 @@ class outOfMemory : public DException
 {
 public:
     outOfMemory() : DException(NULL) {}
-    explicit outOfMemory(const char* message) : DException(message){}
-    outOfMemory(const char* file, int line) : DException(file, line) {}
-    outOfMemory(const char* message, const char* file, int line ) : DException(message,file,line) {}
+    
+	explicit outOfMemory(const char* message) : DException(message){}
+    
+	outOfMemory(const char* file, int line) : DException(file, line) {}
+    
+	outOfMemory(const char* message, const char* file, int line ) : DException(message,file,line) {}
 
     outOfMemory(const outOfMemory& e) : DException(e) {}
 
